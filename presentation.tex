@@ -1,0 +1,168 @@
+\documentclass{beamer}
+\usetheme{metropolis}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage{listings}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{svg}
+\usepackage{minted}
+% Define custom colors
+\definecolor{commentgray}{rgb}{0.5, 0.5, 0.5}
+\definecolor{keywordorange}{rgb}{0.8, 0.4, 0.0}
+\definecolor{typeblue}{rgb}{0.2, 0.6, 1.0}
+\definecolor{fggray}{rgb}{0.4, 0.4, 0.4}
+
+\lstset{
+    language=nix,
+    basicstyle=\ttfamily\color{fggray},
+    keywordstyle=\color{keywordorange}\bfseries,
+    stringstyle=\color{green!60!black},
+    commentstyle=\color{commentgray},
+    morekeywords={with, let, in, rec, import, derivation},
+    numbers=none,
+    showstringspaces=false,
+}
+\title{Nix : Révolutionner la gestion des paquets}
+\author{Emeric Laberge}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{frame}{Plan de la présentation}
+	\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Pourquoi Nix ?}
+	\begin{itemize}
+		\item Problèmes actuels de gestion des paquets :
+		      \begin{itemize}
+			      \item Conflits de dépendances
+			      \item Environnements non reproductibles
+		      \end{itemize}
+		\item Importance pour la qualité logicielle :
+		      \begin{itemize}
+			      \item Fiabilité accrue
+			      \item Maintenance facilitée
+		      \end{itemize}
+	\end{itemize}
+	\footnotetext[1]{\href{https://nixos.org/}{Site officiel de Nix}}
+\end{frame}
+
+\section{Présentation de Nix}
+
+\begin{frame}{Qu'est-ce que Nix ?}
+	\begin{itemize}
+		\item Gestionnaire de paquets fonctionnel
+		\item Isolation complète des dépendances
+		\item Environnements reproductibles
+	\end{itemize}
+	\begin{figure}
+		\centering
+		\includegraphics[width=0.3\linewidth]{nix-logo.pdf}
+	\end{figure}
+	\footnotetext[2]{\href{https://nixos.org/manual/nix/stable/}{Manuel de Nix}}
+\end{frame}
+
+\section{Fonctionnement Technique}
+
+\begin{frame}[fragile]{Expressions Nix}
+	\begin{itemize}
+		\item Définition des paquets via des expressions pures
+		\item Exemple d'une expression simple :
+	\end{itemize}
+	\rule{\linewidth}{0.4pt}
+
+	\begin{lstlisting}[language=nix]
+    # shell.nix
+    {pkgs ? import <nixpkgs> {}}:
+    pkgs.stdEnv.mkShell {
+      buildInputs = with pkgs; [ ];
+    }
+  \end{lstlisting}
+	\rule{\linewidth}{0.4pt}
+	\footnotetext[3]{\href{https://nixos.org/manual/nixpkgs/stable/}{Guide Nixpkgs}}
+\end{frame}
+
+\begin{frame}[fragile]{Installation de Paquets}
+	\begin{itemize}
+		\item Installation isolée :
+	\end{itemize}
+	\begin{lstlisting}[language=bash]
+$ nix-env -iA nixpkgs.hello
+    \end{lstlisting}
+	\begin{itemize}
+		\item Aucun impact sur les autres paquets
+		\item Désinstallation propre
+	\end{itemize}
+\end{frame}
+
+\section{Point Original}
+
+\begin{frame}{Nix et la Gestion Multi-Utilisateurs}
+	\begin{itemize}
+		\item Chaque utilisateur peut avoir son propre profil
+		\item Partage efficace des ressources communes
+		\item Sécurité renforcée
+	\end{itemize}
+	\footnotetext[4]{\href{https://nixos.org/manual/nix/stable/\#sec-multi-user-installation}{Installation multi-utilisateurs}}
+\end{frame}
+
+\section{Réflexion}
+
+\begin{frame}{Avantages et Défis}
+	\begin{itemize}
+		\item \textbf{Avantages} :
+		      \begin{itemize}
+			      \item Environnements cohérents
+			      \item Facilitation du déploiement continu
+		      \end{itemize}
+		\item \textbf{Défis} :
+		      \begin{itemize}
+			      \item Courbe d'apprentissage
+			      \item Intégration avec les systèmes existants
+		      \end{itemize}
+	\end{itemize}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Message Clé}
+	\begin{block}{Adoptez Nix pour une Qualité Logicielle Optimale}
+		\begin{itemize}
+			\item Maîtrisez vos environnements
+			\item Réduisez les bugs liés aux dépendances
+			\item Accélérez vos cycles de développement
+		\end{itemize}
+	\end{block}
+	\begin{center}
+		\Large Merci de votre attention !
+	\end{center}
+\end{frame}
+
+\begin{frame}{Questions}
+	\begin{center}
+		\Large Des questions ?
+	\end{center}
+\end{frame}
+
+\appendix
+
+\section{Sources}
+
+\begin{frame}{Sources}
+	\begin{enumerate}
+		\item \href{https://nixos.org/}{Site officiel de Nix}
+		\item \href{https://nixos.org/manual/nix/stable/}{Manuel de Nix}
+		\item \href{https://nixos.org/manual/nixpkgs/stable/}{Guide Nixpkgs}
+	\end{enumerate}
+\end{frame}
+
+\end{document}
