@@ -144,7 +144,7 @@
 
 \section{Fonctionnement Technique}
 
-\begin{frame}[fragile]{Aperçu de la Syntaxe Nix}
+\begin{frame}[fragile]{Aperçu de la syntaxe Nix}
     \begin{itemize}
         \item \textbf{Valeurs de base :}
             \begin{itemize}
@@ -240,9 +240,11 @@ in pkgs.mkShell {
 \end{lstlisting}
 \end{frame}
 
-
-
-    
+\begin{frame}{Résultat}
+  \begin{center}
+    \includegraphics[width=\linewidth]{sg.png}
+  \end{center}
+\end{frame}
 
 
 
@@ -274,35 +276,33 @@ $ nix-env -iA nixpkgs.hello
 \section{Réflexion}
 
 \begin{frame}{Avantages et Défis}
-	\begin{itemize}
-		\item \textbf{Avantages} :
-		      \begin{itemize}
-			      \item Environnements cohérents
-			      \item Facilitation du déploiement continu
-		      \end{itemize}
-		\item \textbf{Défis} :
-		      \begin{itemize}
-			      \item Courbe d'apprentissage
-			      \item Intégration avec les systèmes existants
-		      \end{itemize}
-	\end{itemize}
+    \textbf{Avantages} :
+    \begin{itemize}
+        \item Environnements cohérents et reproductibles.
+        \item Déploiement simplifié pour les équipes de développement.
+    \end{itemize}
+    \textbf{Défis} :
+    \begin{itemize}
+        \item Courbe d'apprentissage pour les nouveaux utilisateurs.
+        \item Intégration avec les systèmes existants peut être complexe.
+        \item Nécessité de comprendre le modèle fonctionnel pour maximiser son potentiel.
+    \end{itemize}
+    Bien que Nix offre des avantages significatifs, il nécessite un investissement initial en temps d'apprentissage.
 \end{frame}
-
 \section{Conclusion}
-
 \begin{frame}{Message Clé}
-	\begin{block}{Adoptez Nix pour une Qualité Logicielle Optimale}
-		\begin{itemize}
-			\item Maîtrisez vos environnements
-			\item Réduisez les bugs liés aux dépendances
-			\item Accélérez vos cycles de développement
-		\end{itemize}
-	\end{block}
-	\begin{center}
-		\Large Merci de votre attention !
-	\end{center}
+    \begin{block}{Pourquoi adopter Nix ?}
+        \begin{itemize}
+            \item \textbf{Contrôle total} sur les environnements, pour éviter les erreurs de version.
+            \item \textbf{Flexibilité multi-utilisateurs} et gestion facile des dépendances.
+            \item \textbf{Reproductibilité} assurée, pour éviter le fameux "ça
+              marche sur ma machine".
+        \end{itemize}
+    \end{block}
+    \begin{center}
+        \Large Merci de votre attention ! N'hésitez pas à poser des questions.
+    \end{center}
 \end{frame}
-
 \begin{frame}{Questions}
 	\begin{center}
 		\Large Des questions ?
